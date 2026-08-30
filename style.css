@@ -1,0 +1,598 @@
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+   ========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+
+/* ==========================================
+   TÍTULOS
+   ========================================== */
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   PANTALLA DE USUARIO
+   ========================================== */
+
+#pantallaUsuario {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja-usuario {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.caja-usuario h1 {
+    margin-top: 0;
+}
+
+.caja-usuario select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.caja-usuario button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.caja-usuario button:hover {
+    opacity: 0.85;
+}
+
+
+/* ==========================================
+   NAVEGACIÓN ENTRE SEMANAS
+   ========================================== */
+
+.navegacion-semanas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.navegacion-semanas h2 {
+    margin: 0;
+    min-width: 300px;
+}
+
+.navegacion-semanas button {
+    padding: 11px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navegacion-semanas button:hover {
+    background-color: #e9ecef;
+}
+
+
+/* ==========================================
+   CALENDARIO
+   ========================================== */
+
+.calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+
+/* ==========================================
+   DÍAS
+   ========================================== */
+
+.dia {
+    background-color: white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-width: 0;
+}
+
+.dia h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* ==========================================
+   TURNOS
+   ========================================== */
+
+.turno {
+    background-color: #f1f3f5;
+    padding: 13px 9px;
+    border-radius: 8px;
+    margin: 8px 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    overflow-wrap: anywhere;
+}
+
+.turno:hover {
+    background-color: #e2e6ea;
+}
+
+.turno:active {
+    transform: scale(0.98);
+}
+
+.turno strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.turno span {
+    color: #777;
+    display: block;
+}
+
+
+/* ==========================================
+   VENTANA DE HORARIOS
+   ========================================== */
+
+#ventanaTurno {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+#ventanaTurno.ventana-oculta {
+    display: none;
+}
+
+.contenido-ventana {
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contenido-ventana h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.contenido-ventana label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.contenido-ventana select {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 16px;
+    background-color: white;
+}
+
+
+/* ==========================================
+   BOTONES DE LA VENTANA
+   ========================================== */
+
+.botones-ventana {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botones-ventana button {
+    flex: 1;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.botones-ventana button:hover {
+    opacity: 0.85;
+}
+
+
+/* ==========================================
+   MÓVIL VERTICAL
+   ========================================== */
+
+@media (max-width: 900px) and (orientation: portrait) {
+
+    body {
+        padding: 12px;
+    }
+
+    .calendario {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dia {
+        padding: 15px;
+    }
+
+    .dia h3 {
+        font-size: 18px;
+    }
+
+    .turno {
+        padding: 15px 12px;
+        font-size: 15px;
+        margin: 9px 0;
+    }
+
+    .navegacion-semanas {
+        gap: 8px;
+    }
+
+    .navegacion-semanas h2 {
+        min-width: 0;
+        flex: 1;
+        font-size: 16px;
+    }
+
+    .navegacion-semanas button {
+        padding: 11px 10px;
+        font-size: 13px;
+    }
+}
+
+
+/* ==========================================
+   MÓVIL HORIZONTAL
+   ========================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    body {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin: 4px 0;
+    }
+
+    .navegacion-semanas {
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .navegacion-semanas h2 {
+        min-width: 0;
+        font-size: 14px;
+    }
+
+    .navegacion-semanas button {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    /*
+       Los 7 días aparecen en una sola fila.
+    */
+
+    .calendario {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 5px;
+        width: 100%;
+    }
+
+    .dia {
+        padding: 6px;
+        border-radius: 8px;
+    }
+
+    .dia h3 {
+        font-size: 13px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+    }
+
+    .turno {
+        padding: 7px 4px;
+        margin: 4px 0;
+        border-radius: 6px;
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .turno strong {
+        margin-bottom: 3px;
+        font-size: 10px;
+    }
+
+    .turno span {
+        font-size: 10px;
+    }
+}
+
+
+/* ==========================================
+   MÓVILES MUY PEQUEÑOS
+   ========================================== */
+
+@media (max-width: 500px) and (orientation: portrait) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .navegacion-semanas button {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+
+    .navegacion-semanas h2 {
+        font-size: 14px;
+    }
+
+    .contenido-ventana {
+        padding: 20px;
+    }
+}
+/* ==========================================
+   BARRA DE USUARIO
+   ========================================== */
+
+.barra-usuario {
+    max-width: 1400px;
+    margin: 0 auto 10px auto;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    color: #666;
+}
+
+.barra-usuario button {
+    padding: 7px 11px;
+
+    border: 1px solid #ddd;
+    border-radius: 7px;
+
+    background-color: white;
+    color: #555;
+
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.barra-usuario button:hover {
+    background-color: #f1f3f5;
+}
+
+/* ==========================================
+   BARRA DE USUARIO EN MÓVIL
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    .barra-usuario {
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+}
+/* ==========================================
+   VENTANA DE ELECCIÓN DE COLOR
+   ========================================== */
+
+#ventanaColor {
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 2000;
+}
+
+#ventanaColor.ventana-oculta {
+    display: none;
+}
+
+.contenido-color {
+    background-color: white;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+}
+
+.contenido-color h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.contenido-color p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   COLORES DISPONIBLES
+   ========================================== */
+
+#coloresDisponibles {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.color-opcion {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    border: 4px solid white;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+
+    margin: auto;
+
+    transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+}
+
+.color-opcion:hover {
+    transform: scale(1.12);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ==========================================
+   COLORES
+   ========================================== */
+
+.color-azul {
+    background-color: #6ea8fe;
+}
+
+.color-verde {
+    background-color: #75c98b;
+}
+
+.color-naranja {
+    background-color: #f2b866;
+}
+
+.color-morado {
+    background-color: #a987d9;
+}
+
+.color-rojo {
+    background-color: #e88989;
+}
+
+.color-turquesa {
+    background-color: #69c7c7;
+}
+
+.color-lila {
+    background-color: #9b8ee8;
+}
+
+.color-marron {
+    background-color: #c28f68;
+}
+
+
+/* ==========================================
+   MÓVIL
+   ========================================== */
+
+@media (max-width: 500px) {
+
+    .contenido-color {
+        padding: 25px 20px;
+    }
+
+    .color-opcion {
+        width: 55px;
+        height: 55px;
+    }
+
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abuela - Turnos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="pantallaUsuario">
+
+    <div class="caja-usuario">
+
+        <h1>👵 Abuela - Turnos</h1>
+
+        <h2>¿Quién eres?</h2>
+
+        <select id="selectorUsuario">
+    <option value="">Selecciona tu nombre</option>
+    <option value="Lidy">Lidy</option>
+    <option value="Carmen">Carmen</option>
+    <option value="Kike">Kike</option>
+    <option value="Conchi">Conchi</option>
+    <option value="Ani">Ani</option>
+    <option value="Adri">Adri</option>
+    <option value="Cande">Cande</option>
+    <option value="Albita">Albita</option>
+</select>
+
+<label for="selectorColor">Elige tu color:</label>
+
+<input
+    type="color"
+    id="selectorColor"
+    value="#4f46e5"
+>
+
+        <button onclick="entrar()">Entrar</button>
+
+    </div>
+
+</div>
+
+<div id="aplicacion" style="display: none;">
+
+     <div class="barra-usuario">
+        <span>👤 <strong id="usuarioMostrado"></strong></span>
+        <button onclick="cambiarUsuario()">Cambiar usuario</button>
+    </div>
+
+    <h1>👵 Abuela - Turnos</h1>
+
+    <div class="navegacion-semanas">
+    <button onclick="semanaAnterior()">← Anterior</button>
+
+    <h2 id="semana"></h2>
+
+    <button onclick="semanaSiguiente()">Siguiente →</button>
+</div>
+
+    <div class="calendario">
+
+        <!-- LUNES -->
+        <div class="dia">
+            <h3>Lunes</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- MARTES -->
+        <div class="dia">
+            <h3>Martes</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+    
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- MIÉRCOLES -->
+        <div class="dia">
+            <h3>Miércoles</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- JUEVES -->
+        <div class="dia">
+            <h3>Jueves</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- VIERNES -->
+        <div class="dia">
+            <h3>Viernes</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- SÁBADO -->
+        <div class="dia">
+            <h3>Sábado</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+
+        <!-- DOMINGO -->
+        <div class="dia">
+            <h3>Domingo</h3>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>☀️ Mañana</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🍽️ Comida</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌤️ Media tarde</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
+                <strong>🌆 Tarde-noche</strong>
+                <span>Libre</span>
+            </div>
+
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>🌙 Noche</strong>
+                <span>Libre</span>
+            </div>
+        </div>
+
+    </div>
+
+ <button class="color-opcion color-turquesa"
+                data-color="turquesa"
+                onclick="elegirColor('turquesa')">
+            </button>
+
+            <button class="color-opcion color-lila"
+                data-color="lila"
+                onclick="elegirColor('lila')">
+            </button>
+
+            <button class="color-opcion color-marron"
+                data-color="marron"
+                onclick="elegirColor('marron')">
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+
+</div>
+
+</body>
+
+</html>
