@@ -53,12 +53,26 @@
 
     <h1>👵 Abuela - Turnos</h1>
 
+    <div class="controles-calendario">
+
     <div class="navegacion-semanas">
-    <button onclick="semanaAnterior()">← Anterior</button>
+        <button onclick="semanaAnterior()">← Anterior</button>
 
-    <h2 id="semana"></h2>
+        <h2 id="semana"></h2>
 
-    <button onclick="semanaSiguiente()">Siguiente →</button>
+        <button onclick="semanaSiguiente()">Siguiente →</button>
+    </div>
+
+    <div class="selector-vista">
+        <button id="botonSemana" onclick="mostrarVistaSemana()">
+            📋 Semana
+        </button>
+
+        <button id="botonMes" onclick="mostrarVistaMes()">
+            📅 Mes
+        </button>
+    </div>
+
 </div>
 
     <div class="calendario">
@@ -77,13 +91,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -108,13 +122,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+           <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
     
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -139,13 +153,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -170,13 +184,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -201,13 +215,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -232,13 +246,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -263,13 +277,13 @@
                 <span>Libre</span>
             </div>
 
-            <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌤️ Media tarde</strong>
+            <div class="turno" onclick="seleccionarTurno(this)">
+                <strong>😴 Siesta</strong>
                 <span>Libre</span>
             </div>
 
             <div class="turno turno-horario" onclick="seleccionarTurno(this)">
-                <strong>🌆 Tarde-noche</strong>
+                <strong>🌆 Tarde</strong>
                 <span>Libre</span>
             </div>
 
@@ -281,20 +295,28 @@
 
     </div>
 
- <button class="color-opcion color-turquesa"
-                data-color="turquesa"
-                onclick="elegirColor('turquesa')">
-            </button>
+    <!-- CALENDARIO MENSUAL -->
 
-            <button class="color-opcion color-lila"
-                data-color="lila"
-                onclick="elegirColor('lila')">
-            </button>
+    <button onclick="mostrarCalendarioMensual()">
+    📅 Ver calendario mensual
+</button>
 
-            <button class="color-opcion color-marron"
-                data-color="marron"
-                onclick="elegirColor('marron')">
-            </button>
+<div id="calendarioMensual" style="display: none;">
+
+    <div class="cabecera-mes">
+
+        <button onclick="mesAnterior()">← Anterior</button>
+
+        <h2 id="mesActual"></h2>
+
+        <button onclick="mesSiguiente()">Siguiente →</button>
+
+    </div>
+
+    <div class="grid-mes" id="gridMes">
+    </div>
+
+</div>
 
         </div>
 
