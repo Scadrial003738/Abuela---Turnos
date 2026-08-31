@@ -705,8 +705,8 @@ h2 {
     }
 
     .dia-mes small {
-        font-size: 10px;
-    }
+    display: none;
+}
 
 }
 
