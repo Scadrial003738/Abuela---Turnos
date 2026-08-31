@@ -687,41 +687,117 @@ h2 {
 }
 
 /* ==========================================
-   CALENDARIO MENSUAL - MÓVIL
+   CALENDARIO MENSUAL
    ========================================== */
+
+#calendarioMensual {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cabecera-mes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cabecera-mes h2 {
+    margin: 0;
+    min-width: 220px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.cabecera-mes button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+/* CUADRÍCULA */
+
+.grid-mes {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 6px;
+    width: 100%;
+}
+
+
+/* CABECERA DE LOS DÍAS */
+
+.cabecera-dia-mes {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 8px 0;
+    color: #666;
+}
+
+
+/* DÍAS */
+
+.dia-mes {
+    background-color: white;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+    cursor: pointer;
+
+    display: block !important;
+}
+
+
+.dia-mes strong {
+    display: block;
+    font-size: 17px;
+}
+
+
+.dia-mes:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ESPACIOS */
+
+.dia-mes.vacio {
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+
+
+/* MÓVIL */
 
 @media (max-width: 900px) {
 
-    #calendarioMensual {
-        width: 100%;
-        max-width: 100%;
-    }
-
     .grid-mes {
-        display: grid !important;
         grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
         gap: 4px !important;
-        width: 100%;
     }
 
     .dia-mes {
-        min-width: 0 !important;
-        width: 100% !important;
-        min-height: 65px;
-        padding: 6px !important;
-        border-radius: 7px;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start;
+        min-height: 55px;
+        padding: 6px;
     }
 
     .dia-mes strong {
         font-size: 14px;
-        display: block;
     }
 
-    .dia-mes small {
-        display: none !important;
+    .cabecera-dia-mes {
+        font-size: 11px;
+        padding: 5px 0;
     }
 
 }
