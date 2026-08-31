@@ -738,8 +738,9 @@ h2 {
         font-size: 14px;
     }
 
+    /* Ocultar completamente el nombre del día */
     .dia-mes small {
-        font-size: 9px;
+        display: none;
     }
 
 }
