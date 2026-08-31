@@ -1370,3 +1370,203 @@ async function guardarColorUsuario(usuario, color) {
         resultado.data
     );
 }
+// ==========================================
+// CALENDARIO MENSUAL
+// ==========================================
+
+let fechaMesMostrado = new Date();
+
+
+// ==========================================
+// MOSTRAR CALENDARIO MENSUAL
+// ==========================================
+
+async function mostrarCalendarioMensual() {
+
+    const calendario =
+        document.getElementById("calendarioMensual");
+
+    if (!calendario) {
+        console.error("No existe #calendarioMensual");
+        return;
+    }
+
+    calendario.style.display = "block";
+
+    const año =
+        fechaMesMostrado.getFullYear();
+
+    const mes =
+        fechaMesMostrado.getMonth();
+
+    document.getElementById("mesActual").textContent =
+        `${meses[mes]} ${año}`;
+
+    const grid =
+        document.getElementById("gridMes");
+
+    grid.innerHTML = "";
+
+    const primerDia =
+        new Date(año, mes, 1);
+
+    const ultimoDia =
+        new Date(año, mes + 1, 0);
+
+    // Lunes = 0, domingo = 6
+    let primerDiaSemana =
+        primerDia.getDay() - 1;
+
+    if (primerDiaSemana < 0) {
+        primerDiaSemana = 6;
+    }
+
+
+    // Espacios antes del día 1
+    for (
+        let i = 0;
+        i < primerDiaSemana;
+        i++
+    ) {
+
+        const espacio =
+            document.createElement("div");
+
+        espacio.className =
+            "dia-mes vacio";
+
+        grid.appendChild(espacio);
+    }
+
+
+    // Días del mes
+    for (
+        let dia = 1;
+        dia <= ultimoDia.getDate();
+        dia++
+    ) {
+
+        const fecha =
+            new Date(año, mes, dia);
+
+        const diaMes =
+            document.createElement("div");
+
+        diaMes.className =
+            "dia-mes";
+
+            diaMes.onclick = function () {
+    irAlDia(fecha);
+};
+
+        const numero =
+            document.createElement("strong");
+
+        numero.textContent =
+            dia;
+
+        diaMes.appendChild(numero);
+
+
+        const nombresDias = [
+            "Domingo",
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado"
+        ];
+
+
+        const nombreDia =
+            document.createElement("small");
+
+        nombreDia.textContent =
+            nombresDias[fecha.getDay()];
+
+        diaMes.appendChild(nombreDia);
+
+
+        grid.appendChild(diaMes);
+    }
+}
+
+
+// ==========================================
+// MES ANTERIOR
+// ==========================================
+
+function mesAnterior() {
+
+    fechaMesMostrado.setMonth(
+        fechaMesMostrado.getMonth() - 1
+    );
+
+    mostrarCalendarioMensual();
+}
+
+
+// ==========================================
+// MES SIGUIENTE
+// ==========================================
+
+function mesSiguiente() {
+
+    fechaMesMostrado.setMonth(
+        fechaMesMostrado.getMonth() + 1
+    );
+
+    mostrarCalendarioMensual();
+}
+// ==========================================
+// IR A UN DÍA DESDE EL CALENDARIO MENSUAL
+// ==========================================
+
+function irAlDia(fecha) {
+
+    const lunes =
+        new Date(fecha);
+
+    const diaSemana =
+        lunes.getDay();
+
+    const diferencia =
+        diaSemana === 0
+            ? -6
+            : 1 - diaSemana;
+
+    lunes.setDate(
+        lunes.getDate() + diferencia
+    );
+
+    lunes.setHours(0, 0, 0, 0);
+
+
+    const diferenciaSemanas =
+        Math.round(
+            (lunes - lunesActual) /
+            (7 * 24 * 60 * 60 * 1000)
+        );
+
+
+    desplazamientoSemana =
+        diferenciaSemanas;
+
+
+    // Ocultar calendario mensual
+
+    document.getElementById(
+        "calendarioMensual"
+    ).style.display = "none";
+
+
+    // Mostrar calendario semanal
+
+    document.querySelector(
+        ".calendario"
+    ).style.display = "grid";
+
+
+    mostrarSemana();
+}
