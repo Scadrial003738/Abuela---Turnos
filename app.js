@@ -1381,10 +1381,9 @@ let fechaMesMostrado = new Date();
 // MOSTRAR CALENDARIO MENSUAL
 // ==========================================
 
-async function mostrarCalendarioMensual() {
+function mostrarCalendarioMensual() {
 
-    const calendario =
-        document.getElementById("calendarioMensual");
+    const calendario = document.getElementById("calendarioMensual");
 
     if (!calendario) {
         console.error("No existe #calendarioMensual");
@@ -1393,53 +1392,79 @@ async function mostrarCalendarioMensual() {
 
     calendario.style.display = "block";
 
-    const año =
-        fechaMesMostrado.getFullYear();
-
-    const mes =
-        fechaMesMostrado.getMonth();
+    const año = fechaMesMostrado.getFullYear();
+    const mes = fechaMesMostrado.getMonth();
 
     document.getElementById("mesActual").textContent =
         `${meses[mes]} ${año}`;
 
-    const grid =
-        document.getElementById("gridMes");
+    const grid = document.getElementById("gridMes");
 
     grid.innerHTML = "";
 
-    const primerDia =
-        new Date(año, mes, 1);
+    // ==========================================
+    // CABECERA DE DÍAS
+    // ==========================================
 
-    const ultimoDia =
-        new Date(año, mes + 1, 0);
+    const nombresDias = [
+        "L",
+        "M",
+        "X",
+        "J",
+        "V",
+        "S",
+        "D"
+    ];
 
-    // Lunes = 0, domingo = 6
-    let primerDiaSemana =
-        primerDia.getDay() - 1;
+    nombresDias.forEach(nombre => {
+
+        const cabecera = document.createElement("div");
+
+        cabecera.className = "cabecera-dia-mes";
+
+        cabecera.textContent = nombre;
+
+        grid.appendChild(cabecera);
+
+    });
+
+
+    // ==========================================
+    // PRIMER DÍA DEL MES
+    // ==========================================
+
+    const primerDia = new Date(año, mes, 1);
+
+    let primerDiaSemana = primerDia.getDay() - 1;
 
     if (primerDiaSemana < 0) {
         primerDiaSemana = 6;
     }
 
 
-    // Espacios antes del día 1
-    for (
-        let i = 0;
-        i < primerDiaSemana;
-        i++
-    ) {
+    // ==========================================
+    // ESPACIOS VACÍOS
+    // ==========================================
 
-        const espacio =
-            document.createElement("div");
+    for (let i = 0; i < primerDiaSemana; i++) {
 
-        espacio.className =
-            "dia-mes vacio";
+        const espacio = document.createElement("div");
+
+        espacio.className = "dia-mes vacio";
 
         grid.appendChild(espacio);
+
     }
 
 
-    // Días del mes
+    // ==========================================
+    // DÍAS
+    // ==========================================
+
+    const ultimoDia =
+        new Date(año, mes + 1, 0);
+
+
     for (
         let dia = 1;
         dia <= ultimoDia.getDate();
@@ -1449,47 +1474,44 @@ async function mostrarCalendarioMensual() {
         const fecha =
             new Date(año, mes, dia);
 
+
         const diaMes =
             document.createElement("div");
+
 
         diaMes.className =
             "dia-mes";
 
-            diaMes.onclick = function () {
-    irAlDia(fecha);
-};
+
+        // Número
 
         const numero =
             document.createElement("strong");
 
+
         numero.textContent =
             dia;
+
 
         diaMes.appendChild(numero);
 
 
-        const nombresDias = [
-            "Domingo",
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado"
-        ];
+        // Al pulsar
 
+        diaMes.addEventListener(
+            "click",
+            function () {
 
-        const nombreDia =
-            document.createElement("small");
+                irAlDia(fecha);
 
-        nombreDia.textContent =
-            nombresDias[fecha.getDay()];
-
-        diaMes.appendChild(nombreDia);
+            }
+        );
 
 
         grid.appendChild(diaMes);
+
     }
+
 }
 
 
@@ -1504,6 +1526,7 @@ function mesAnterior() {
     );
 
     mostrarCalendarioMensual();
+
 }
 
 
@@ -1518,9 +1541,12 @@ function mesSiguiente() {
     );
 
     mostrarCalendarioMensual();
+
 }
+
+
 // ==========================================
-// IR A UN DÍA DESDE EL CALENDARIO MENSUAL
+// IR A UN DÍA
 // ==========================================
 
 function irAlDia(fecha) {
@@ -1528,19 +1554,28 @@ function irAlDia(fecha) {
     const lunes =
         new Date(fecha);
 
+
     const diaSemana =
         lunes.getDay();
+
 
     const diferencia =
         diaSemana === 0
             ? -6
             : 1 - diaSemana;
 
+
     lunes.setDate(
         lunes.getDate() + diferencia
     );
 
-    lunes.setHours(0, 0, 0, 0);
+
+    lunes.setHours(
+        0,
+        0,
+        0,
+        0
+    );
 
 
     const diferenciaSemanas =
@@ -1554,14 +1589,10 @@ function irAlDia(fecha) {
         diferenciaSemanas;
 
 
-    // Ocultar calendario mensual
-
     document.getElementById(
         "calendarioMensual"
     ).style.display = "none";
 
-
-    // Mostrar calendario semanal
 
     document.querySelector(
         ".calendario"
@@ -1569,4 +1600,5 @@ function irAlDia(fecha) {
 
 
     mostrarSemana();
+
 }
