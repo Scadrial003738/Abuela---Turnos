@@ -686,61 +686,42 @@ h2 {
     margin-top: 10px;
 }
 
-
-/* MÓVIL */
+/* ==========================================
+   CALENDARIO MENSUAL - MÓVIL
+   ========================================== */
 
 @media (max-width: 900px) {
 
+    #calendarioMensual {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .grid-mes {
-        gap: 5px;
+        display: grid !important;
+        grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+        gap: 4px !important;
+        width: 100%;
     }
 
     .dia-mes {
-        min-height: 80px;
-        padding: 7px;
-    }
-
-    .dia-mes strong {
-        font-size: 15px;
-    }
-
-    .dia-mes small {
-    display: none;
-}
-
-}
-
-
-@media (max-width: 500px) {
-
-    .cabecera-mes {
-        gap: 8px;
-    }
-
-    .cabecera-mes h2 {
-        min-width: 0;
-        flex: 1;
-        font-size: 16px;
-    }
-
-    .cabecera-mes button {
-        padding: 9px 8px;
-        font-size: 12px;
-    }
-
-    .dia-mes {
+        min-width: 0 !important;
+        width: 100% !important;
         min-height: 65px;
-        padding: 5px;
+        padding: 6px !important;
         border-radius: 7px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start;
     }
 
     .dia-mes strong {
         font-size: 14px;
+        display: block;
     }
 
-    /* Ocultar completamente el nombre del día */
     .dia-mes small {
-        display: none;
+        display: none !important;
     }
 
 }
